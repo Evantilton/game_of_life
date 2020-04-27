@@ -51,14 +51,24 @@ function draw() {
     // compute next based on grid;
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            
+            let state = grid[i][j];
             //edges
             if (i == 0 || i == cols - 1 || j == 0 || j == rows - 1) {
-
+                next[i][j] = grid [i][j];
             }
+            
             // count live neighbors!
             let sum = 0;
             let neighbors = count(grid, i, j) 
+
+            
+            if (state == 0 && neighbors == 3) {
+                next[i][j] = 1;
+            } else if (state == 1 && (neighbors < 2 || neighbors > 3)) {
+                next[i][j] == 0;
+            } else  {
+                next[i][j] = state;
+            }
         }
     }
 
