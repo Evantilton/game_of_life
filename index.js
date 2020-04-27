@@ -30,9 +30,12 @@ function draw() {
     console.log("in draw");
     background(0);
 
+
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
-            grid[i][j] = floor(random(2));
+
+
+
             let x = i * resolution;
             let y = j * resolution;
             if (grid[i][j] == 1) {
@@ -48,6 +51,11 @@ function draw() {
     // compute next based on grid;
     for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
+            
+            //edges
+            if (i == 0 || i == cols - 1 || j == 0 || j == rows - 1) {
+
+            }
             // count live neighbors!
             let sum = 0;
             let neighbors = count(grid, i, j) 
